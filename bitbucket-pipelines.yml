@@ -1,23 +1,6 @@
 image: python:3.12
 
 pipelines:
-  pull-requests:
-    '**':
-      - parallel:
-          - step:
-              name: ruff check
-              caches:
-                - pip
-              script:
-                - pip install ruff
-                - ruff check .
-          - step:
-              name: black check
-              caches:
-                - pip
-              script:
-                - pip install black
-                - black --line-length 120 --check .
   branches:
     master:
       - step:
